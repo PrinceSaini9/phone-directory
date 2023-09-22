@@ -21,7 +21,7 @@ function App() {
       <button className="bg-success fs-5 m-4 px-4 py-2 text-light text-uppercase border-0 ">
         Add
       </button>
-      <div className="row mb-3">
+      <div className="row mb-4">
         <span className="col-4 mx-4 text-uppercase fs-5 fw-bold text-dark text-opacity-50"> Name </span><br />
         <span className="col-4 text-uppercase fs-5 fw-bold text-dark text-opacity-50"> Phone </span>
       </div>
@@ -30,6 +30,7 @@ function App() {
           return <div className="row" key={sub.id}>
           <span className="col-4 mx-4  fs-5  text-dark"> {sub.name} </span><br />
           <span className="col-4  fs-5  text-dark "> {sub.num} </span>
+          <button className="col-1 px-1 mb-2  bg-danger bg-opacity-50 border-0">DELETE</button>
         </div>
         })
       }
