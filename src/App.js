@@ -1,5 +1,4 @@
-import React
-  from "react";
+import React from "react";
 import Header from "./header.js";
 
 function App() {
@@ -15,9 +14,15 @@ function App() {
       num: 987098778
     }
   ];
+  const dltHandler = (msg)=>{
+    alert(msg);
+    
+  }
+  
+  
   return (
     <div className="body">
-      <Header />
+      <Header heading="phone directory"/>
       <button className="bg-success fs-5 m-4 px-4 py-2 text-light text-uppercase border-0 ">
         Add
       </button>
@@ -30,7 +35,7 @@ function App() {
           return <div className="row" key={sub.id}>
           <span className="col-4 mx-4  fs-5  text-dark"> {sub.name} </span><br />
           <span className="col-4  fs-5  text-dark "> {sub.num} </span>
-          <button className="col-1 px-1 mb-2  bg-danger bg-opacity-50 border-0">DELETE</button>
+          <button onClick={()=>dltHandler("clicked")} className="col-1 px-1 mb-2  bg-danger bg-opacity-50 border-0">DELETE</button>
         </div>
         })
       }
