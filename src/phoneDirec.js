@@ -7,33 +7,27 @@ import { useNavigate } from "react-router-dom";
 
 function PhoneDirec() {
 
-    const [state, setState] = useState({
-        sublist: [
-            {
-                id: 1,
-                name: "Prince",
-                phone: "9876454"
-            }
-        ]
-    });
+    const [state, setState] = useState([
+        {
+            id: 1,
+            name: "Prince",
+            phone: "9876454"
+        }
+    ]
+    );
 
-    function onDelete(subId){
-        let sublist = state.sublist;
-        let i = 0;
-        sublist.forEach((sub,index)=>{
-            if(sub.id===subId)
-            i=index;
-        });
-        let newSubs = sublist;
-        newSubs.splice(i,1);
-        setState({sublist:newSubs});
+    function onDelete(subId) {
+        let sublist = state;
+        let newSubs = sublist.filter((sub) => sub.id !== subId);
+        setState([...newSubs]);
     }
 
     function addSubsHandler(newSub) {
-        let sublist = state.sublist;
+        let sublist = state;
+
         newSub.id = sublist.length + 1;
-        state.sublist.push(newSub);
-        setState({ sublist: sublist });
+        state.push(newSub);
+        setState(state);
     };
 
     const navigate = useNavigate();
@@ -42,7 +36,7 @@ function PhoneDirec() {
 
         <div>
             <Routes>
-                <Route exact path="/" element={<App onDelete={onDelete} sub={state.sublist} />} />
+                <Route exact path="/" element={<App onDelete={onDelete} sub={state} />} />
                 <Route exact path="/add" element={<Subs navigate={navigate} addSubsHandler={addSubsHandler} />} />
             </Routes>
         </div>

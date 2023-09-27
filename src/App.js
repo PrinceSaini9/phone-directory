@@ -1,13 +1,19 @@
 import React from "react";
 import Header from "./header.js";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 
 function App(props) {
 
   const dltHandler = (subId) => {
     props.onDelete(subId);
+
   }
+
+  useEffect(() => {
+    document.title = `PhoneDirectory-(${props.sub.length})`
+  }, [props.sub])
 
   return (
     <div className="body">
